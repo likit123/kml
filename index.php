@@ -47,7 +47,7 @@ $kml[]='<LineStyle>';
     </Style>';
 
     $arr=array(
-    {"id":1,"kind":"1","description":"Hello 1","lng":"18.2671664","lng":"99.7729226"},
+    {"id":1,"kind":"1","description":"Hello 1","lat":"18.2671664","lng":"99.7729226"},
 
     );
 
