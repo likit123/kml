@@ -47,22 +47,30 @@ $kml[]='<LineStyle>';
     </Style>';
 
     $arr=array(
-    {"id":1,"kind":"1","description":"Hello 1","lat":"18.2671664","lng":"99.7729226"},
+    ["id"=>100,"kind"=>"1","description"=>"Hello 100","lat"=>"17.529634","lng"=>"99.140962"],
+    ["id"=>200,"kind"=>"2","description"=>"Hello 200","lat"=>"17.5321386","lng"=>"99.1479705"],
+    ["id"=>300,"kind"=>"3","description"=>"Hello 300","lat"=>"17.534981","lng"=>"99.142191"],
 
     );
 
     foreach($arr as $arr_){
-    $description=$arr_->description;
-    $kml[] = ' <Folder>';
-      $kml[] = ' <name>'.$arr_->id.'</name>';
-      $kml[] = ' <Placemark id="' .$arr_->id. '">';
-        $kml[] = ' <name>' . $arr_->id . '</name>';
 
-        if($arr_->kind=='1'){
+    $id=$arr_['id'];
+    $kind=$arr_['kind'];
+    $description=$arr_['description'];
+    $lat=$arr_['lat'];
+    $lng=$arr_['lng'];
+
+    $kml[]=' <Folder>' ; $kml[]=' <name>' .$id.'</name>';
+
+      $kml[] = ' <Placemark id="' .$id. '">';
+        $kml[] = ' <name>' . $id . '</name>';
+
+        if($kind=='1'){
         $kml[] = ' <styleUrl>#' . (nodeA) .'Style</styleUrl>';
-        }elseif($arr_->kind=='2'){
+        }elseif($kind=='2'){
         $kml[] = ' <styleUrl>#' . (nodeB) .'Style</styleUrl>';
-        }elseif($arr_->kind=='3'){
+        }elseif($kind=='3'){
         $kml[] = ' <styleUrl>#' . (nodeC) .'Style</styleUrl>';
         }
 
@@ -70,12 +78,11 @@ $kml[]='<LineStyle>';
           <![CDATA[$description]]>
         </description>";
         $kml[] = ' <Point>';
-          $kml[] = ' <coordinates>' . $arr_->lng. ',' . $arr_->lat . '</coordinates>';
+          $kml[] = ' <coordinates>' . $lng. ',' . $lat . '</coordinates>';
           $kml[] = ' </Point>';
         $kml[] = ' </Placemark>';
       $kml[] = ' </Folder>';
     }
-
 
     $kml[] = ' </Document>';
   $kml[] = '</kml>';
